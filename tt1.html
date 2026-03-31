@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Landing Page</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+header {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 50px;
+    background: transparent;
+    transition: 0.4s;
+    z-index: 1000;
+}
+
+header.scrolled {
+    background: #111;
+}
+
+.logo {
+    color: white;
+}
+
+header ul {
+    display: flex;
+    list-style: none;
+}
+
+header ul li a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+header ul li a:hover {
+    color: #00f2ff;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: linear-gradient(to right, #141e30, #243b55);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 50px;
+}
+
+.hero button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    background: #00f2ff;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.hero button:hover {
+    background: white;
+}
+
+/* SECTIONS */
+.section {
+    padding: 100px 50px;
+    text-align: center;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 300px;
+    margin: 20px;
+    padding: 15px;
+    background: #f4f4f4;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header id="navbar">
+    <h2 class="logo">MyPage</h2>
+    <ul>
+        <li><a href="#" onclick="smoothScroll(event, 'home')">Home</a></li>
+        <li><a href="#about" onclick="smoothScroll(event, 'about')">About</a></li>
+        <li><a href="#services" onclick="smoothScroll(event, 'services')">Services</a></li>
+        <li><a href="#contact" onclick="smoothScroll(event, 'contact')">Contact</a></li>
+    </ul>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <h1>Welcome to My Landing Page</h1>
+    <p>Creative • Modern • Responsive Design</p>
+    <button onclick="scrollToSection()">Explore More</button>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+    <h2>About Us</h2>
+    <p>This landing page is created as part of my internship task using HTML, CSS and JavaScript.</p>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section cards">
+    <div class="card">
+        <img src="https://source.unsplash.com/300x200/?technology" alt="">
+        <h3>Web Design</h3>
+        <p>Modern and responsive designs.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://source.unsplash.com/300x200/?coding" alt="">
+        <h3>Development</h3>
+        <p>Clean and efficient code.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://source.unsplash.com/300x200/?uiux" alt="">
+        <h3>UI/UX</h3>
+        <p>User-friendly interfaces.</p>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+    <h2>Contact</h2>
+    <p>Email: example@gmail.com</p>
+</section>
+
+<script>
+// Navbar color change on scroll
+window.addEventListener("scroll", function() {
+    let navbar = document.getElementById("navbar");
+
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+
+// Button scroll
+function scrollToSection() {
+    document.getElementById("about").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+// Navbar smooth scroll
+function smoothScroll(event, sectionId) {
+    event.preventDefault();
+    document.getElementById(sectionId).scrollIntoView({
+        behavior: "smooth"
+    });
+}
+</script>
+
+</body>
+</html>
